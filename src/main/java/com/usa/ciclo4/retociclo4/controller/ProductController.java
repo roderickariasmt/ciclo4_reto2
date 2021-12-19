@@ -36,12 +36,12 @@ public class ProductController {
 
     @DeleteMapping("/{reference}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("reference") String reference){
-        return  productService.delete(reference);
+    public boolean delete(@PathVariable("reference") Integer id){
+        return  productService.delete(id);
     }
 
     @GetMapping("/{reference}")
-    public Optional<Product> getProduct(@PathVariable("reference") String reference){
-        return productService.getProduct(reference);
+    public Optional<Product> getProduct(@PathVariable("reference") Integer id){
+        return productService.getProduct(id);
     }
 }

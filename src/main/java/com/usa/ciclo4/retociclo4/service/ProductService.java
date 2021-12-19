@@ -17,12 +17,12 @@ public class ProductService {
         return productRepository.getAll();
     }
 
-    public Optional<Product> getProduct(String reference){
-        return productRepository.getProduct(reference);
+    public Optional<Product> getProduct(Integer id){
+        return productRepository.getProduct(id);
     }
 
     public Product save(Product product){
-        if(product.getReference() == null) {
+        if(product.getId() == null) {
             return product;
         }else{
             return productRepository.save(product);
@@ -31,8 +31,8 @@ public class ProductService {
 
     public Product update(Product product) {
 
-        if (product.getReference() != null) {
-            Optional<Product> dbProduct = productRepository.getProduct(product.getReference());
+        if (product.getId() != null) {
+            Optional<Product> dbProduct = productRepository.getProduct(product.getId());
             if (!dbProduct.isEmpty()) {
                 /*if (product.getBrand() != null) {
                     dbProduct.get().setBrand(product.getBrand());
@@ -40,8 +40,8 @@ public class ProductService {
                 if (product.getCategory() != null) {
                     dbProduct.get().setCategory(product.getCategory());
                 }
-                if (product.getPresentation() != null) {
-                    dbProduct.get().setPresentation(product.getPresentation());
+                if (product.getName() != null) {
+                    dbProduct.get().setName(product.getName());
                 }
                 if (product.getDescription() != null) {
                     dbProduct.get().setDescription(product.getDescription());
@@ -66,8 +66,8 @@ public class ProductService {
         }
     }
 
-    public boolean delete(String reference){
-        return getProduct(reference).map(product -> {
+    public boolean delete(Integer id){
+        return getProduct(id).map(product -> {
             productRepository.delete(product);
             return true;
         }).orElse(false);

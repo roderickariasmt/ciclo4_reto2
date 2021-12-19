@@ -12,13 +12,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 public class Product {
     @Id
-    private String reference;
+    private Integer id;
     private String brand;
     private String category;
-    private String presentation;
+    private String name;
     private String description;
-    private boolean availability;
     private Double price;
+    private boolean availability;
+    
     private Integer quantity;
     private String photography;
 
